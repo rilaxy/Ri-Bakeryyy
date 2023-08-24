@@ -1,0 +1,60 @@
+
+
+function congso(){
+	var num1 = $('.qtyu').val()
+	if( num1 < 0){
+		alert('Bạn không thể cộng')
+		$('.qtyu').val(Number(1))
+	}else{
+		num1 = Number(num1) + Number(1)
+		$('.qtyu').val(Number(num1))
+	}
+}
+function truso(){
+	var num1 = $('.qtyu').val()
+	if( num1 <= 1){
+		alert('Bạn không thể tiếp tục giảm sản phẩm')
+		$('.qtyu').val(Number(1))
+	}else{
+		num1 = num1 - 1
+		$('.qtyu').val(Number(num1))
+	}
+}
+function kiemtraso(){
+	var num1 = $('.qtyu').val()
+	if(isNaN(num1)){
+		alert("Bạn hảy nhập vào giá trị là số")
+		$('.qtyu').val(Number(1))
+	}
+	else if( num1 < 1){
+		alert('Bạn phải nhập giá trị lớn hơn 0')
+		$('.qtyu').val(Number(1))
+	}
+	else{
+		$('.qtyu').val(1)
+	}
+}
+$(document).ready(function(){
+	$('.submitdatmua').click(function(){
+		$('.formsoluong').submit();
+	})
+})
+
+//------------------------------
+function sanpham(val,id){
+	if(val != ""){
+		$('.nh_'+id).select()
+		var dataList = $query('#thucdu');
+		$.ajax({
+			url:'/action.php',
+			type: 'POST',
+			data: 'url=thucdu&'+dataList,
+			dataType: "html",
+			success: function(data){
+				$('#thucnguyen').html(data)
+				// $('.nh_'+id).focus()
+			}
+		});
+	}else{
+	}
+}1
